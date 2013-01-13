@@ -1,0 +1,27 @@
+﻿@model MvcApplication1.Models.User.UserLogin
+
+@{
+    ViewBag.Title = "Log In";
+}
+
+<h2>Log In</h2>
+
+@using(Html.BeginForm())
+{
+    <p>
+        @Html.LabelFor(m => m.UserName)
+        @Html.EditorFor(m => m.UserName)
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.Password)
+        @Html.EditorFor(m => m.Password)
+    </p>
+    
+    <p>
+        @Html.LabelFor(m => m.RememberMe)
+        @Html.CheckBoxFor(m => m.RememberMe)
+    </p>
+    
+    <input type="submit" value="LogIn"/>
+}

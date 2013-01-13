@@ -1,0 +1,11 @@
+﻿@model MvcApplication1.Models.ListShow
+
+
+<h2>@Model.Name</h2>
+
+<ol>
+    @foreach(var bc in Model.Cards)
+    {
+        <li>@Html.Partial("CardView", bc)</li> 
+    }
+</ol>

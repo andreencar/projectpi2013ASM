@@ -1,0 +1,32 @@
+﻿@model MvcApplication1.Models.User.UserEdit
+           
+@{
+    ViewBag.Title = "Editing " + Model.UserName;
+    Model.UserName = Membership.GetUser().UserName;
+}
+
+@using (Html.BeginForm("UploadPicture", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <p>
+        @Html.LabelFor(m => m.Picture)
+         <input type="file" name="file" id="file" />
+    </p>
+<input type="submit"/>
+}
+@using(Html.BeginForm()){
+    <p>
+        @Html.LabelFor(m => m.Comment)
+        @Html.EditorFor(m => m.Comment)
+    </p>
+    
+    <input type="submit" value="Edit"/>
+}
+
+@using(Html.BeginForm("Delete","User",FormMethod.Post))
+{
+    @Html.Hidden("username", Model.UserName);
+        <input type="submit" value="Remove User"/>
+}
+
+
+
