@@ -8,6 +8,8 @@
         if (input.length >= 3) {
 
             SBoxList.hide();
+
+            SBoxList.hide();
             $.getJSON("/Ajax/AjaxTest/" , { sbinput : input}, function(data) {
                 $.each(data, function (i, item) {
                     var toAppear = document.createElement("li")
