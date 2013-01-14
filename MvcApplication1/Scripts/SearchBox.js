@@ -9,7 +9,7 @@
         if (input.length >= 3) {
 
             //SBoxList.hide();
-            $.getJSON("/Ajax/AjaxTest/", { sbinput: input }, function (data) {
+            $.getJSON("/Ajax/SearchHelper/", { sbinput: input }, function (data) {
                 $.each(data, function (i, item) {
                     var toAppear = document.createElement("li");
                     var btn = document.createElement("a");
