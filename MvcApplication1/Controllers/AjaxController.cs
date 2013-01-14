@@ -17,7 +17,7 @@ namespace MvcApplication1.Controllers
             return View();
         }
 
-        public ActionResult AjaxTest(string sbinput)
+        public ActionResult SearchHelper(string sbinput)
         {
             var repo = MvcApplication.Repo;
             var boards = repo.GetBoardsLikeString(sbinput);
@@ -30,6 +30,14 @@ namespace MvcApplication1.Controllers
                 suggestionList.Add(toAdd);
             }
             return Json(suggestionList.ToArray(), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult ChangeDescription(string description, int cardId) {
+            var repo = MvcApplication.Repo;
+            BoardCard toEdit = repo.GetEntryFromBoard(repo.GetBoardThatContainsCard(cardId), cardId);
+            toEdit.Description = description;
+            return Json(toEdit, JsonRequestBehavior.AllowGet);
+
         }
 
     }

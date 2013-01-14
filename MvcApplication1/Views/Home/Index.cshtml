@@ -1,14 +1,27 @@
-﻿@section JavaScript{
-    <script src ="@Url.Content("~/Scripts/SearchBox.js")" type="text/javascript"> </script>
-}
-
-
-<div class="container">
+﻿<div class="container">
     <div class="row-fluid">
-        <div class="span10" id="Welcome">
+        <div class="span10 offset1" id="Welcome">
             <div class="hero-unit">
+                @if(@HttpContext.Current.Request.IsAuthenticated){
+                    if (!MvcApplication1.MvcApplication.Repo.GetBoardsFromUser(Membership.GetUser().UserName).Any()) { 
+                        <h3>Is it your first time using our application? @Html.ActionLink("Create a new Board!", "Create", "Board", null,null)</h3>
+                        
+                    }
+                    else{
+                        <h3>Here are the boards that you've created!</h3>
+                    <ol>
+                    @foreach(MvcApplication1.DataBaseStructures.Board aux in MvcApplication1.MvcApplication.Repo.GetBoardsFromUser(Membership.GetUser().UserName)){
+                        <li>@Html.ActionLink(aux.Name, "Show", "Board", new { id= aux.BoardId }, null)</li>
+                            
+                        }
+                    </ol>
+                    }
+                }
+                
+                else{
                 <h1>Welcome to Project PI 2013</h1>
                 <h2>Brought to you by Andre Encarnacao and Sergio Freitas</h2>
+                }
             </div>
         </div>
     </div>

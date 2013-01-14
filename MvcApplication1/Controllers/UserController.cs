@@ -33,9 +33,9 @@ namespace MvcApplication1.Controllers
             string[] info = user.Comment.Split('#');
             bool hasPhoto = false;
             string extension = "";
-            string username =  HashCode(Membership.GetUser().UserName);
+            string username =  Membership.GetUser().UserName;
 
-            DirectoryInfo di = new DirectoryInfo(Server.MapPath("~/Content/"));
+            DirectoryInfo di = new DirectoryInfo(Server.MapPath("~/App_Data/"));
             FileInfo[] rgFiles = di.GetFiles();
             foreach (var imageFile in rgFiles) {
                 if (imageFile.Name.Split('.')[0] == username)
@@ -48,7 +48,7 @@ namespace MvcApplication1.Controllers
 
             var userModel = new UserModel
             {
-                Photo = Url.Content("~/Content/") + username + extension,
+                Photo = Url.Content("~/App_Data/") + username + extension,
                 IsPhoto = hasPhoto,
                 Comment = info[2],
                 UserName = user.UserName,
@@ -101,7 +101,7 @@ namespace MvcApplication1.Controllers
                 string fileType = file.ContentType.Split('/')[1];
                 if(fileType.Equals("png") || fileType.Equals("bmp") || fileType.Equals("jpg") ){
                     var fileName = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Content/"), HashCode(Membership.GetUser().UserName) +"."+ fileType);
+                    var path = Path.Combine(Server.MapPath("~/App_Data/"), Membership.GetUser().UserName +"."+ fileType);
                     file.SaveAs(path);
                     Response.StatusCode = 200;
                     return RedirectToAction("Profile", "User");
