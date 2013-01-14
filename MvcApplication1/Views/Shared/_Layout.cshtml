@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="@Url.Content("~/Content/css/bootstrap.css")"/> 
     
     <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery-1.7.1.intellisense.js")" type="text/javascript"></script>
     @RenderSection("JavaScript", required: false)
 </head>
@@ -18,8 +19,6 @@
                         <div class="row-fluid">
                             <a class="brand">Project PI 2013</a>
                                 <ul class ="nav">
-
-                                    
 
                                     <li>@Html.ActionLink("Home","Index","Home")</li>
 
@@ -41,10 +40,14 @@
                             <div class="pull-right">
                                 <ul class="nav">
                                     <li>@using(Html.BeginForm("Search","Board",FormMethod.Post,new { id = "Search" , @class="navbar-form form-search"})){
-                                            <div class="input-append">
-                                                <input type="text" name="searchInput" class="input-medium search-query" id="searchInput" placeholder="Search..."/>
-                                                <input type="submit" value="Search" class="btn"/>
-                                            </div>
+                                            <div class="input-append">                                               
+                                                <div class="dropdown">
+                                                    <input type="text" name="searchInput" data-toggle="dropdown" class="input-medium search-query" id="searchInput" placeholder="Search..."/>
+                                                    <input type="submit" value="Search" class="btn"/>
+                                                    <ul id="SearchBoxList" class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                    </ul>
+                                             </div>
+                                         </div>
                                     }</li>
                                 </ul>
                             </div>
@@ -53,10 +56,6 @@
             </div>
          </div>
       </div>
-
-      
-      <ul id="SearchBoxList">
-      </ul>
        
         @RenderBody()
     </body>

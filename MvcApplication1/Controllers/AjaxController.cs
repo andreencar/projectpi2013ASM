@@ -26,7 +26,7 @@ namespace MvcApplication1.Controllers
             foreach (Board aux in boards)
             {
                 toAdd.name = aux.Name;
-                toAdd.link = Url.Action("Show", "Board", null, "http") + aux.BoardId;
+                toAdd.link = Url.Action("Show", "Board", null, "http") + "/" + aux.BoardId;
                 suggestionList.Add(toAdd);
             }
             return Json(suggestionList.ToArray(), JsonRequestBehavior.AllowGet);
