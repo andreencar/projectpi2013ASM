@@ -3,6 +3,7 @@
     ViewBag.Title = @Model.Name;
 }
 
+<div class="container">
 <h2>Board - @Model.Name</h2>
 
 @Model.Description
@@ -10,7 +11,7 @@
 @Model.IsPublic
 <br/>
 
-<table>
+<table class="table">
     <tr>
            
         @foreach(var bl in Model.List)
@@ -38,3 +39,4 @@
     }
 </table>
 
+    </div>
