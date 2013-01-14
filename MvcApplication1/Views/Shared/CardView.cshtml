@@ -1,7 +1,9 @@
 ﻿@model MvcApplication1.Models.CardShow
 
-
+<div class="card" id="@Model.Id">
 <table>
+
     <tr><th>Card Id - @Model.Id</th></tr>
-    <tr><td>@Model.Description</td></tr>
+    <tr><td contenteditable="true" class="cardDescription" id="@Model.Id">@Model.Description</td></tr>
 </table>    
+    </div>

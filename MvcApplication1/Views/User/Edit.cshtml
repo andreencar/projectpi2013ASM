@@ -11,21 +11,22 @@
         @Html.LabelFor(m => m.Picture)
          <input type="file" name="file" id="file" />
     </p>
-<input type="submit"/>
+<input type="submit" class="btn"/>
 }
+
 @using(Html.BeginForm()){
     <p>
         @Html.LabelFor(m => m.Comment)
         @Html.EditorFor(m => m.Comment)
     </p>
     
-    <input type="submit" value="Edit"/>
+    <input type="submit" value="Edit" class="btn btn-primary"/>
 }
 
 @using(Html.BeginForm("Delete","User",FormMethod.Post))
 {
     @Html.Hidden("username", Model.UserName);
-        <input type="submit" value="Remove User"/>
+        <input type="submit" value="Remove User" class="btn"/>
 }
 
 

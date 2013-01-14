@@ -13,12 +13,13 @@ namespace MvcApplication1.DataBaseStructures
         public bool IsPublic { private set; get; }
 
 
-        public Registery(Board b, string username, bool canContribute)
+        public Registery(Board b, string username, bool canView)
         {
+            IsPublic = canView;
             Author = username;
             Users = new List<UserProperty>();
             Users.Add(new UserProperty(username,true));
-            IsPublic = canContribute;
+          //  IsPublic = canContribute;
             Board = b;
         }
     }

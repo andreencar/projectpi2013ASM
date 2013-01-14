@@ -3,6 +3,10 @@
     ViewBag.Title = @Model.Name;
 }
 
+@section Javascript{
+<script src ="@Url.Content("~/Scripts/EditCard.js")" type="text/javascript"> </script>
+}
+
 <div class="container">
 <h2>Board - @Model.Name</h2>
 
@@ -33,7 +37,7 @@
         <tr>
         @foreach(var bl in Model.List)
         {
-            <td>@Html.ActionLink("Edit","Edit","List", new {id = bl.Id}, null)</td>
+            <td>@Html.ActionLink("Edit List","Edit","List", new {id = bl.Id}, null)</td>
         }
         </tr>
     }

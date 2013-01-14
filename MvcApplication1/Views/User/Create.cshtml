@@ -5,18 +5,21 @@
 }
 
 @section Javascript{
-<script src ="@Url.Content("~/Scripts/FormValidationRegister.js")" type="text/javascript"> </script>
+    <script src ="@Url.Content("~/Scripts/FormValidationRegister.js")" type="text/javascript"> </script>
+    <script src ="@Url.Content("~/Scripts/Validator.js")" type="text/javascript"> </script>
 }
 
 <h2>Create New User</h2>
 
-@using(Html.BeginForm("Create","User",FormMethod.Post,new { id = "RegisterForm" }))
+@using(Html.BeginForm("Create","User",FormMethod.Post,new { id = "RegisterForm", @class = "Form-inline"}))
 {
-    <p id="Form_Username">
-        @Html.LabelFor(m => m.UserName)
-        @Html.EditorFor(m => m.UserName)
-        @Html.ValidationMessageFor(m => m.UserName)
-    </p>
+    <div id="username">
+        <p id="Form_Username">
+            @Html.LabelFor(m => m.UserName)
+            @Html.EditorFor(m => m.UserName)
+            @Html.ValidationMessageFor(m => m.UserName)
+        </p>
+    </div>    
 
     <p id="Form_Password">
         @Html.LabelFor(m => m.Password)
@@ -24,13 +27,13 @@
         @Html.ValidationMessageFor(m => m.Password)
     </p>
     
-    <p>
+    <p id="Form_Name">
         @Html.LabelFor(m => m.Name)
         @Html.EditorFor(m => m.Name)
         @Html.ValidationMessageFor(m => m.Name)
     </p>
     
-    <p>
+    <p id="Form_Email">
         @Html.LabelFor(m => m.Email)
         @Html.EditorFor(m => m.Email)
         @Html.ValidationMessageFor(m => m.Email)
